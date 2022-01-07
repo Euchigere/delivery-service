@@ -14,7 +14,7 @@ class NotFoundGraphQLError(private val message: String): GraphQLError {
     }
 
     override fun getLocations(): MutableList<SourceLocation>? {
-        return null;
+        return null
     }
 
     override fun getErrorType(): ErrorClassification {

@@ -50,6 +50,6 @@ class BootstrapData(
             reader.lines().collect(Collectors.joining("\n"))
         }
         val mapper = jacksonObjectMapper().registerModule(JavaTimeModule())
-        return mapper.readValue(jsonString);
+        return mapper.readValue(jsonString)
     }
 }

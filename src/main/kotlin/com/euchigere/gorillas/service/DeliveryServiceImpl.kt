@@ -6,7 +6,6 @@ import com.euchigere.gorillas.models.DeliveryStatus
 import com.euchigere.gorillas.repository.DeliveryRepository
 import com.euchigere.gorillas.repository.DeliveryStatusRepository
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.time.Instant
 
@@ -26,7 +25,7 @@ class DeliveryServiceImpl(
     }
 
     override fun findDeliveriesByDeliveryStatus(isDelivered: Boolean): Mono<List<Delivery>> {
-        return deliveryRepo.findDeliveriesByDeliveryStatus(isDelivered).collectList();
+        return deliveryRepo.findDeliveriesByDeliveryStatus(isDelivered).collectList()
     }
 
     private fun updateDeliveryStatus(deliveryStatus: DeliveryStatus): Mono<DeliveryStatus> {
@@ -35,6 +34,6 @@ class DeliveryServiceImpl(
             deliveryStatus.deliveryDate = Instant.now()
             return deliveryStatusRepo.save(deliveryStatus)
         }
-        return Mono.just(deliveryStatus);
+        return Mono.just(deliveryStatus)
     }
 }
