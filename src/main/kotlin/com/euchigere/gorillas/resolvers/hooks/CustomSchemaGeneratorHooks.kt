@@ -30,7 +30,7 @@ object InstantCoercing : Coercing<Instant, String> {
         return try {
             Instant.parse(literal)
         } catch (e: Exception) {
-            throw CoercingSerializeException("Could not parse Date string: $e")
+            throw CoercingSerializeException("Could not parse Instant string: $e")
         }
     }
 
