@@ -2,6 +2,7 @@ package com.euchigere.gorillas.resolvers.query
 
 import com.euchigere.gorillas.models.Delivery
 import com.euchigere.gorillas.service.DeliveryService
+import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.server.operations.Query
 import kotlinx.coroutines.reactive.awaitFirstOrDefault
 import org.springframework.stereotype.Component
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component
  */
 @Component
 class DeliveryQuery(private val service: DeliveryService): Query {
+    @GraphQLDescription("Get deliveries by delivery status")
     suspend fun deliveries(isDelivered: Boolean) : List<Delivery> {
         return service.findDeliveriesByDeliveryStatus(isDelivered)
             .awaitFirstOrDefault(listOf())
