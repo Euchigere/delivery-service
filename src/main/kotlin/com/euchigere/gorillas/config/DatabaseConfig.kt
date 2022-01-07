@@ -18,5 +18,4 @@ class DatabaseConfig {
         converters.add(DeliveryReadConverter())
         return R2dbcCustomConversions.of(H2Dialect.INSTANCE, converters)
     }
-
 }
