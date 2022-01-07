@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: delivery
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: r2dbc:h2:mem:///db
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+
+graphql:
+  packages:
+    "com.euchigere.gorillas"
