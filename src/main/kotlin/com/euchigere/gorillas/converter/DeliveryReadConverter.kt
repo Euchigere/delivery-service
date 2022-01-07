@@ -15,11 +15,12 @@ import java.time.ZoneOffset
 class DeliveryReadConverter : Converter<Row, Delivery> {
     override fun convert(source: Row): Delivery {
         val deliveryStatus = DeliveryStatus(
-            null,
+            source.get("ds_id") as Int,
             source.get("delivery_id") as Int,
             source.get("is_delivered") as Boolean,
             (source.get("delivery_date") as LocalDateTime?)?.toInstant(ZoneOffset.UTC)
         )
+
         return Delivery(
             source.get("id") as Int,
             source.get("delivery_id") as Int,

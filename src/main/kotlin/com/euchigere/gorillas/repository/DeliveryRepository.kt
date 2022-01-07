@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux
 @Repository
 interface DeliveryRepository : ReactiveCrudRepository<Delivery, Int> {
     @Query(
-        "select d.*, ds.* from delivery d join delivery_status ds on d.delivery_id = ds.delivery_id " +
+        "select d.*, ds.id as ds_id, ds.* from delivery d join delivery_status ds on d.delivery_id = ds.delivery_id " +
                 "where ds.is_delivered = :isDelivered"
     )
     fun findDeliveriesByDeliveryStatus(@Param(value = "isDelivered") isDelivered: Boolean) : Flux<Delivery>
